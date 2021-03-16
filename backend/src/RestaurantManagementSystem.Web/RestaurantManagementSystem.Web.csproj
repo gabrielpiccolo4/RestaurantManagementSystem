@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>RestaurantManagementSystem.WEB</AssemblyName>
+    <RootNamespace>RestaurantManagementSystem.Web</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.12" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantManagementSystem.Api\RestaurantManagementSystem.Api.csproj" />
+    <ProjectReference Include="..\RestaurantManagementSystem.Data\RestaurantManagementSystem.Data.csproj" />
+    <ProjectReference Include="..\RestaurantManagementSystem.Services\RestaurantManagementSystem.Services.csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestaurantManagementSystem.Services</name>
+    </assembly>
+    <members>
+        <member name="T:RestaurantManagementSystem.Services.Entities.BaseEntity">
+            <summary>
+            Abstract class for the Entities
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.BaseEntity.Id">
+            <summary>
+            Entity ID
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Entities.Restaurant">
+            <summary>
+            Restaurant entity
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.Restaurant.Name">
+            <summary>
+            Company name
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.Restaurant.Address">
+            <summary>
+            Address
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.Restaurant.Rating">
+            <summary>
+            Rating
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Entities.User">
+            <summary>
+            User entity
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.User.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.User.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.User.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.User.Email">
+            <summary>
+            E-mail
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Entities.User.Roles">
+            <summary>
+            Roles <see cref="P:RestaurantManagementSystem.Services.Entities.User.Roles"/>
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings">
+            <summary>
+            Interface for the App Settings
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings.JwtSecret">
+            <summary>
+            JSON Web Token Secret
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings">
+            <summary>
+            Interface for the Database Settings
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings.ClusterName">
+            <summary>
+            Name of the cluster
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings.DatabaseName">
+            <summary>
+            Name of the database
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings.Login">
+            <summary>
+            Username of the cluster
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings.Password">
+            <summary>
+            Password of the cluster
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Repositories.IRestaurantRepository">
+            <summary>
+            Interface for the Restaurant Repository
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository">
+            <summary>
+            Interface for the User Repository
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository.FindAsync(System.String,System.String)">
+            <summary>
+            Find the User
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ILoginService">
+            <summary>
+            Interface for the Login Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ILoginService.Login(System.String,System.String)">
+            <summary>
+            Login for the user
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Passowrd</param>
+            <returns>An instance of <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ITokenService">
+            <summary>
+            Interface for the Token Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ITokenService.GenerateToken(RestaurantManagementSystem.Services.Entities.User)">
+            <summary>
+            Generates the token based on the user
+            </summary>
+            <param name="user">Instance of <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></param>
+            <returns>Token</returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.IRestaurantService">
+            <summary>
+            Interface for the Restaurant Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Services.IRestaurantService.GetById(System.String)">
+            <summary>
+            Find the restaurant by id
+            </summary>
+            <param name="id">ID of the restaurant</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Services.Entities.Restaurant"/></returns>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Services.IRestaurantService.GetAll">
+            <summary>
+            Find all restaurants
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of Lists of type <see cref="T:RestaurantManagementSystem.Services.Entities.Restaurant"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.IService">
+            <summary>
+            Interface for the Services classes
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Services.Authentication.JwtService">
+            <summary>
+            JSON Web Token Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.JwtService.#ctor(RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Services.Services.Authentication.JwtService"/> class
+            </summary>
+            <param name="appSettings">Instance of <see cref="T:RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings"/></param>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.JwtService.GenerateToken(RestaurantManagementSystem.Services.Entities.User)">
+            <summary>
+            Generates and returns the Authentication Token for the user
+            </summary>
+            <param name="user">User regarding the token to be created</param>
+            <returns>Token</returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Services.Authentication.LoginService">
+            <summary>
+            Login Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.LoginService.#ctor(RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository,RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ITokenService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Services.Services.Authentication.LoginService"/> class
+            </summary>
+            <param name="userRepository">Instance of the user repository</param>
+            <param name="tokenService">Instance of the token service</param>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.LoginService.Login(System.String,System.String)">
+            <summary>
+            Checks if the user exists and generates the Authentication token
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO">
+            <summary>
+            Login request DTO
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO">
+            <summary>
+            Login response DTO
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO.#ctor(System.String,RestaurantManagementSystem.Services.Entities.User)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/> class
+            </summary>
+            <param name="token">Token to use as authentication</param>
+            <param name="user"></param>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO.Token">
+            <summary>
+            Token generated
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO.User">
+            <summary>
+            User logged in
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Application.Services.RestaurantService">
+            <summary>
+            Restaurant Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Application.Services.RestaurantService.#ctor(RestaurantManagementSystem.Services.Interfaces.Repositories.IRestaurantRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Application.Services.RestaurantService"/> class
+            </summary>
+            <param name="restaurantRepository">Restaurant Repository</param>
+        </member>
+        <member name="M:RestaurantManagementSystem.Application.Services.RestaurantService.GetById(System.String)">
+            <summary>
+            Get the restaurant
+            </summary>
+            <param name="id">ID of the restaurant</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Services.Entities.Restaurant"/></returns>
+        </member>
+        <member name="M:RestaurantManagementSystem.Application.Services.RestaurantService.GetAll">
+            <summary>
+            Gets all the restaurants
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of Lists of type <see cref="T:RestaurantManagementSystem.Services.Entities.Restaurant"/></returns>
+        </member>
+    </members>
+</doc>
