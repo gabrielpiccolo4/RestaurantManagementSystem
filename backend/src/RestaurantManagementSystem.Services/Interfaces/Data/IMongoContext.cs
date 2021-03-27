@@ -4,10 +4,10 @@ namespace RestaurantManagementSystem.Services.Interfaces.Data
 {
     public interface IMongoContext
     {
-        public MongoClient MongoClient { get; set; }
+        public MongoClient MongoClient { get; }
 
-        public IMongoDatabase Database { get; set; }
+        public IMongoDatabase Database { get; }
 
-        public IClientSessionHandle Session { get; set; }
+        public IClientSessionHandle Session { get; }
     }
 }

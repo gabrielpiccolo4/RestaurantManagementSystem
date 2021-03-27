@@ -14,11 +14,9 @@ namespace RestaurantManagementSystem.Api.Controllers
     /// <summary>
     /// Controller for the restaurants service
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    //[Authorize]
-    //[RoleAuthorize(Roles.Admin, Roles.User)]
-    public class RestaurantController : ControllerBase
+    [Authorize]
+    [RoleAuthorize(Roles.Admin, Roles.User)]
+    public class RestaurantController : BaseController
     {
         private readonly IRestaurantService _restaurantService;
 

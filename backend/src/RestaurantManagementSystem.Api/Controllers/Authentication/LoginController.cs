@@ -4,14 +4,12 @@ using RestaurantManagementSystem.Application.Models.Authentication;
 using RestaurantManagementSystem.Services.Interfaces.Services.Authentication;
 using System.Threading.Tasks;
 
-namespace RestaurantManagementSystem.Api.Controllers
+namespace RestaurantManagementSystem.Api.Controllers.Authentication
 {
     /// <summary>
     /// Controller for the login service
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : BaseController
     {
         private readonly ILoginService _loginService;
 

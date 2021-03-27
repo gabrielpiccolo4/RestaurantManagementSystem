@@ -14,10 +14,10 @@ namespace RestaurantManagementSystem.Infrastructure.Data
             Database = MongoClient.GetDatabase(databaseSettings.DatabaseName);
         }
 
-        public MongoClient MongoClient { get; set; }
+        public MongoClient MongoClient { get; }
 
-        public IMongoDatabase Database { get; set; }
+        public IMongoDatabase Database { get; }
 
-        public IClientSessionHandle Session { get; set; }
+        public IClientSessionHandle Session { get; }
     }
 }
