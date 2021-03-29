@@ -10,37 +10,39 @@ namespace RestaurantManagementSystem.Api.Controllers.Authentication
     /// <summary>
     /// Controller for the login service
     /// </summary>
-    public class LoginController : BaseController
+    public class SignupController : BaseController
     {
-        private readonly ILoginService _loginService;
+        private readonly ISignUpService _signUpService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginController"/> class
         /// </summary>
-        /// <param name="loginService">Instance of the Login Service</param>
-        public LoginController(ILoginService loginService)
+        /// <param name="signUpService">Instance of the Sign Up Service</param>
+        public SignupController(ISignUpService signUpService)
         {
-            _loginService = loginService;
+            _signUpService = signUpService;
         }
 
         /// <summary>
         /// Login
         /// </summary>
-        /// <param name="loginRequest">Instance of the <see cref="LoginRequestDTO"/> class</param>
+        /// <param name="signUpRequestDTO">Instance of the <see cref="SignUpRequestDTO"/> class</param>
         /// <returns>An <see cref="ActionResult"/> of type <see cref="LoginResponseDTO"/></returns>
         /// <response code="200">Logged in successfully</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public async Task<ActionResult<LoginResponseDTO>> Post(LoginRequestDTO loginRequest)
+        public async Task<ActionResult<LoginResponseDTO>> Post(SignUpRequestDTO signUpRequestDTO)
         {
-            var loginResponse = await _loginService.Login(loginRequest.Username, loginRequest.Password);
+            var user = new User(signUpRequestDTO.Username, signUpRequestDTO.Password, signUpRequestDTO.Name, signUpRequestDTO.Email);
 
-            if (loginResponse == null)
-                return Unauthorized();
+            user = await _signUpService.Signup(user);
 
-            return Ok(loginResponse);
+            if (user == null)
+                return RedirectToPage("login");
+
+            return Ok(user);
         }
     }
 }

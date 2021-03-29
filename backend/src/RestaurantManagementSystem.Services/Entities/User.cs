@@ -10,6 +10,17 @@ namespace RestaurantManagementSystem.Services.Entities
     /// </summary>
     public class User : BaseEntity, IAggregateRoot
     {
+        public User() { }
+
+        public User(string username, string password, string name, string email)
+        {
+            Username = username;
+            Password = password;
+            Name = name;
+            Email = email;
+            Roles = new List<Roles>() { Common.Enums.Roles.User };
+        }
+
         /// <summary>
         /// Username
         /// </summary>

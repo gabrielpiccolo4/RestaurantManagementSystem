@@ -5,6 +5,8 @@ using RestaurantManagementSystem.Services.Interfaces.Data;
 using RestaurantManagementSystem.Services.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using MongoDB.Driver;
 
 namespace RestaurantManagementSystem.Infrastructure.Repositories
 {
@@ -36,6 +38,13 @@ namespace RestaurantManagementSystem.Infrastructure.Repositories
                 Email = "dsads@dassa.com",
                 Roles = new List<Roles>() { Roles.User }
             };
+        }
+
+        public async Task<User> FindAsyncByEmail(string email)
+        {
+            var filter = Builders<User>.Filter.Where(user => user.Email == email);
+            var find = await Collection.FindAsync<User>(filter);
+            return find.FirstOrDefault();
         }
     }
 }

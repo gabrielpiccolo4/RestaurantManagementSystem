@@ -22,7 +22,10 @@ namespace RestaurantManagementSystem.Infrastructure.Repositories
 
         public virtual async Task InsertAsync(TEntity entity)
         {
-            await Collection.InsertOneAsync(Context.Session, entity);
+            using (var session = await Context.MongoClient.StartSessionAsync())
+            {
+                await Collection.InsertOneAsync(session, entity);
+            }
         }
 
         public virtual async Task UpdateAsync(TEntity entity)
