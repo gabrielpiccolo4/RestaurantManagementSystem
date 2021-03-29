@@ -74,6 +74,11 @@
             JSON Web Token Secret
             </summary>
         </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings.AesKey">
+            <summary>
+            AES Cryptography Key
+            </summary>
+        </member>
         <member name="T:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings">
             <summary>
             Interface for the Database Settings
@@ -227,12 +232,12 @@
             Login Service
             </summary>
         </member>
-        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.SignUpService.#ctor(RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository,RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ITokenService)">
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.SignUpService.#ctor(RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository,RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings)">
             <summary>
             Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Services.Services.Authentication.LoginService"/> class
             </summary>
             <param name="userRepository">Instance of the user repository</param>
-            <param name="tokenService">Instance of the token service</param>
+            <param name="appSettings">Instance of the app settings</param>
         </member>
         <member name="T:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO">
             <summary>

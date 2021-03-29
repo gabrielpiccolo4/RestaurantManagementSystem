@@ -1,6 +1,6 @@
-﻿using RestaurantManagementSystem.Application.Models.Authentication;
-using RestaurantManagementSystem.Common.Enums;
+﻿using RestaurantManagementSystem.Common.Helpers;
 using RestaurantManagementSystem.Services.Entities;
+using RestaurantManagementSystem.Services.Interfaces.Models;
 using RestaurantManagementSystem.Services.Interfaces.Repositories;
 using RestaurantManagementSystem.Services.Interfaces.Services.Authentication;
 using System;
@@ -14,17 +14,17 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
     public class SignUpService : ISignUpService
     {
         private readonly IUserRepository _userRepository;
-        private readonly ITokenService _tokenService;
+        private readonly IAppSettings _appSettings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginService"/> class
         /// </summary>
         /// <param name="userRepository">Instance of the user repository</param>
-        /// <param name="tokenService">Instance of the token service</param>
-        public SignUpService(IUserRepository userRepository, ITokenService tokenService)
+        /// <param name="appSettings">Instance of the app settings</param>
+        public SignUpService(IUserRepository userRepository, IAppSettings appSettings)
         {
             _userRepository = userRepository;
-            _tokenService = tokenService;
+            _appSettings = appSettings;
         }
 
         public async Task<User> Signup(User newUser)
@@ -44,6 +44,8 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
             var userExists = await _userRepository.FindAsyncByEmail(newUser.Email);
             if (userExists != null)
                 return null;
+
+            newUser.Password = AesCryptographyHelper.EncryptString(newUser.Password, _appSettings.AesKey);
 
             await _userRepository.InsertAsync(newUser);
 
