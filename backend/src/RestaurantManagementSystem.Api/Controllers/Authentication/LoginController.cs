@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantManagementSystem.Application.Models.Authentication;
-using RestaurantManagementSystem.Services.Entities;
 using RestaurantManagementSystem.Services.Interfaces.Services.Authentication;
 using System.Threading.Tasks;
 
@@ -35,7 +34,7 @@ namespace RestaurantManagementSystem.Api.Controllers.Authentication
         [HttpPost]
         public async Task<ActionResult<LoginResponseDTO>> Post(LoginRequestDTO loginRequest)
         {
-            var loginResponse = await _loginService.Login(loginRequest.Username, loginRequest.Password);
+            var loginResponse = await _loginService.Login(loginRequest.Email, loginRequest.Password);
 
             if (loginResponse == null)
                 return Unauthorized();

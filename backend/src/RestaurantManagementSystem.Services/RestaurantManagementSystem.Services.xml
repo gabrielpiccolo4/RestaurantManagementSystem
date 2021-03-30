@@ -223,7 +223,7 @@
             <summary>
             Checks if the user exists and generates the Authentication token
             </summary>
-            <param name="username">Username</param>
+            <param name="email">Email</param>
             <param name="password">Password</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
         </member>
@@ -244,9 +244,9 @@
             Login request DTO
             </summary>
         </member>
-        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Username">
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Email">
             <summary>
-            Username
+            Email
             </summary>
         </member>
         <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Password">

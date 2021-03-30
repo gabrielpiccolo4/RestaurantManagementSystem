@@ -69,12 +69,10 @@ namespace RestaurantManagementSystem.Common.Helpers
                 {
                     string result;
                     using (var msDecrypt = new MemoryStream(cipher))
+                    using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                        {
-                            using var srDecrypt = new StreamReader(csDecrypt);
-                            result = srDecrypt.ReadToEnd();
-                        }
+                        using var srDecrypt = new StreamReader(csDecrypt);
+                        result = srDecrypt.ReadToEnd();
                     }
 
                     return result;

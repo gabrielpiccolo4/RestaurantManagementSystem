@@ -22,9 +22,12 @@ namespace RestaurantManagementSystem.Infrastructure.Repositories
 
         public virtual async Task InsertAsync(TEntity entity)
         {
+            // WIP - Session & Transaction should not be here!
             using (var session = await Context.MongoClient.StartSessionAsync())
             {
+                session.StartTransaction();
                 await Collection.InsertOneAsync(session, entity);
+                await session.CommitTransactionAsync();
             }
         }
 
