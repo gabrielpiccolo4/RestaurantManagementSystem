@@ -33,12 +33,6 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
         /// <returns>A <see cref="Task"/> of type <see cref="LoginResponseDTO"/></returns>
         public async Task<LoginResponseDTO> Login(string email, string password)
         {
-            if (string.IsNullOrEmpty(email))
-                throw new ArgumentNullException(nameof(email));
-
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException(nameof(password));
-
             var user = await _userRepository.FindAsync(email, password);
             if (user == null)
                 return null;

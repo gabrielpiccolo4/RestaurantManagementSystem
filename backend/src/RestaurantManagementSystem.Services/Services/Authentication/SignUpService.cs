@@ -33,15 +33,6 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
 
         public async Task<User> SignUp(User newUser)
         {
-            if (string.IsNullOrEmpty(newUser.Email))
-                throw new ArgumentNullException(nameof(newUser.Email));
-
-            if (string.IsNullOrEmpty(newUser.Email))
-                throw new ArgumentNullException(nameof(newUser.Name));
-
-            if (string.IsNullOrEmpty(newUser.Email))
-                throw new ArgumentNullException(nameof(newUser.Password));
-
             var userExists = await _userRepository.FindAsyncByEmail(newUser.Email);
             if (userExists != null)
                 return null;
