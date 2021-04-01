@@ -1,6 +1,7 @@
 ﻿using RestaurantManagementSystem.Common.Enums;
 using RestaurantManagementSystem.Services.Interfaces.Repositories;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace RestaurantManagementSystem.Services.Entities
@@ -12,35 +13,34 @@ namespace RestaurantManagementSystem.Services.Entities
     {
         public User() { }
 
-        public User(string username, string password, string name, string email)
+        public User(string email, string name, string password)
         {
-            Username = username;
-            Password = password;
-            Name = name;
             Email = email;
+            Name = name;
+            Password = password;
             Roles = new List<Roles>() { Common.Enums.Roles.User };
         }
 
         /// <summary>
-        /// Username
+        /// E-mail
         /// </summary>
-        public string Username { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        [Required]
+        public string Name { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
         [JsonIgnore]
+        [Required]
+        [MinLength(6)]
         public string Password { get; set; }
-
-        /// <summary>
-        /// Name
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// E-mail
-        /// </summary>
-        public string Email { get; set; }
 
         /// <summary>
         /// Roles <see cref="Roles"/>

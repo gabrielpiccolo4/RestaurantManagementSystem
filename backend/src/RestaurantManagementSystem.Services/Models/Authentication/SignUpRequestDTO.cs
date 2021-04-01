@@ -1,4 +1,6 @@
-﻿namespace RestaurantManagementSystem.Application.Models.Authentication
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RestaurantManagementSystem.Application.Models.Authentication
 {
     /// <summary>
     /// Sign up request DTO
@@ -8,21 +10,21 @@
         /// <summary>
         /// Full name
         /// </summary>
+        [Required]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Username
-        /// </summary>
-        public string Username { get; set; }
 
         /// <summary>
         /// Email
         /// </summary>
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
+        [Required]
+        [MinLength(6)]
         public string Password { get; set; }
     }
 }

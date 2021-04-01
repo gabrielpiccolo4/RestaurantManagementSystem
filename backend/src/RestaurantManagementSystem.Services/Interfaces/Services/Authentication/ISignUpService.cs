@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 namespace RestaurantManagementSystem.Services.Interfaces.Services.Authentication
 {
     /// <summary>
-    /// Interface for the Sign up Service
+    /// Interface for the Sign Up Service
     /// </summary>
     public interface ISignUpService : IService
     {
         /// <summary>
-        /// Sign up for the user
+        /// Creates an account for the user
         /// </summary>
         /// <param name="user">An instance of <see cref="User"/></param>
         /// <returns>An instance of <see cref="User"/></returns>
-        Task<User> Signup(User user);
+        Task<User> SignUp(User user);
     }
 }
