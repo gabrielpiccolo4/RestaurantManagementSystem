@@ -28,9 +28,12 @@ namespace RestaurantManagementSystem.Api.Controllers.Authentication
         /// <param name="loginRequest">Instance of the <see cref="LoginRequestDTO"/> class</param>
         /// <returns>An <see cref="ActionResult"/> of type <see cref="LoginResponseDTO"/></returns>
         /// <response code="200">Logged in successfully</response>
+        /// <response code="401">Password is invalid</response>
+        /// <response code="404">Couldn’t find an account associated with this email</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPost]
         public async Task<ActionResult<LoginResponseDTO>> Post(LoginRequestDTO loginRequest)
         {
