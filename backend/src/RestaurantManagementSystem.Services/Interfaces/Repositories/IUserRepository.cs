@@ -15,5 +15,12 @@ namespace RestaurantManagementSystem.Services.Interfaces.Repositories
         /// <param name="password">Password</param>
         /// <returns>A <see cref="Task"/> of type <see cref="User"/></returns>
         Task<User> FindAsync(string username, string password);
+
+        /// <summary>
+        /// Find the User
+        /// </summary>
+        /// <param name="email">Email</param>
+        /// <returns>A <see cref="Task"/> of type <see cref="User"/></returns>
+        Task<User> FindAsyncByEmail(string email);
     }
 }

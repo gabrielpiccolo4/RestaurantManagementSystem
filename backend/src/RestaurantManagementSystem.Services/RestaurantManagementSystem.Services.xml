@@ -74,6 +74,11 @@
             JSON Web Token Secret
             </summary>
         </member>
+        <member name="P:RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings.AesKey">
+            <summary>
+            AES Cryptography Key
+            </summary>
+        </member>
         <member name="T:RestaurantManagementSystem.Services.Interfaces.Models.IDatabaseSettings">
             <summary>
             Interface for the Database Settings
@@ -117,6 +122,13 @@
             <param name="password">Password</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></returns>
         </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository.FindAsyncByEmail(System.String)">
+            <summary>
+            Find the User
+            </summary>
+            <param name="email">Email</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></returns>
+        </member>
         <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ILoginService">
             <summary>
             Interface for the Login Service
@@ -129,6 +141,18 @@
             <param name="username">Username</param>
             <param name="password">Passowrd</param>
             <returns>An instance of <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ISignUpService">
+            <summary>
+            Interface for the Sign up Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ISignUpService.Signup(RestaurantManagementSystem.Services.Entities.User)">
+            <summary>
+            Sign up for the user
+            </summary>
+            <param name="user">An instance of <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></param>
+            <returns>An instance of <see cref="T:RestaurantManagementSystem.Services.Entities.User"/></returns>
         </member>
         <member name="T:RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ITokenService">
             <summary>
@@ -199,18 +223,30 @@
             <summary>
             Checks if the user exists and generates the Authentication token
             </summary>
-            <param name="username">Username</param>
+            <param name="email">Email</param>
             <param name="password">Password</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> of type <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
+        </member>
+        <member name="T:RestaurantManagementSystem.Services.Services.Authentication.SignUpService">
+            <summary>
+            Login Service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Services.Services.Authentication.SignUpService.#ctor(RestaurantManagementSystem.Services.Interfaces.Repositories.IUserRepository,RestaurantManagementSystem.Services.Interfaces.Models.IAppSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Services.Services.Authentication.LoginService"/> class
+            </summary>
+            <param name="userRepository">Instance of the user repository</param>
+            <param name="appSettings">Instance of the app settings</param>
         </member>
         <member name="T:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO">
             <summary>
             Login request DTO
             </summary>
         </member>
-        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Username">
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Email">
             <summary>
-            Username
+            Email
             </summary>
         </member>
         <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginRequestDTO.Password">
@@ -238,6 +274,31 @@
         <member name="P:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO.User">
             <summary>
             User logged in
+            </summary>
+        </member>
+        <member name="T:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO">
+            <summary>
+            Sign up request DTO
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO.Name">
+            <summary>
+            Full name
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO.Password">
+            <summary>
+            Password
             </summary>
         </member>
         <member name="T:RestaurantManagementSystem.Application.Services.RestaurantService">

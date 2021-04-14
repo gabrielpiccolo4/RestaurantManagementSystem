@@ -51,6 +51,25 @@
             <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> of type <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
             <response code="200">Logged in successfully</response>
         </member>
+        <member name="T:RestaurantManagementSystem.Api.Controllers.Authentication.SignupController">
+            <summary>
+            Controller for the login service
+            </summary>
+        </member>
+        <member name="M:RestaurantManagementSystem.Api.Controllers.Authentication.SignupController.#ctor(RestaurantManagementSystem.Services.Interfaces.Services.Authentication.ISignUpService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RestaurantManagementSystem.Api.Controllers.Authentication.LoginController"/> class
+            </summary>
+            <param name="signUpService">Instance of the Sign Up Service</param>
+        </member>
+        <member name="M:RestaurantManagementSystem.Api.Controllers.Authentication.SignupController.Post(RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO)">
+            <summary>
+            Login
+            </summary>
+            <param name="signUpRequestDTO">Instance of the <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.SignUpRequestDTO"/> class</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> of type <see cref="T:RestaurantManagementSystem.Application.Models.Authentication.LoginResponseDTO"/></returns>
+            <response code="200">Logged in successfully</response>
+        </member>
         <member name="T:RestaurantManagementSystem.Api.Controllers.BaseController">
             <summary>
             Abstract class for the Controllers
