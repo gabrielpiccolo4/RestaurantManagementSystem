@@ -24,7 +24,7 @@ namespace RestaurantManagementSystem.Application.Models.Authentication
         /// Password
         /// </summary>
         [Required]
-        [MinLength(6)]
+        [MinLength(6, ErrorMessage = "Password must be 6 characters or more.")]
         public string Password { get; set; }
     }
 }

@@ -33,7 +33,6 @@ namespace RestaurantManagementSystem.Api.Controllers.Authentication
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
         public async Task<ActionResult> Post(SignUpRequestDTO signUpRequestDTO)
         {

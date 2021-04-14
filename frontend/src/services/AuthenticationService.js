@@ -24,4 +24,20 @@ function logout() {
     delete api.defaults.headers.common.Authorization;
 }
 
-export { login, logout };
+async function signup(name, email, password) {
+    let response;
+
+    try {
+        await api.post('/signup', {
+            Name: name,
+            Email: email,
+            Password: password
+        });
+    } catch (error) {
+        throw error;
+    }
+
+    return response;
+}
+
+export { login, logout, signup };
