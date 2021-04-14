@@ -49,7 +49,6 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
         private ClaimsIdentity GetClaimsIdentity(User user)
         {
             var claims = new ClaimsIdentity();
-            claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Username));
             claims.AddClaim(new Claim(ClaimTypes.Name, user.Name));
             claims.AddClaim(new Claim(ClaimTypes.Email, user.Email));
 

@@ -7,7 +7,5 @@ namespace RestaurantManagementSystem.Services.Interfaces.Data
         public MongoClient MongoClient { get; }
 
         public IMongoDatabase Database { get; }
-
-        public IClientSessionHandle Session { get; }
     }
 }

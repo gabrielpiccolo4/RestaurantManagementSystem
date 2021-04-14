@@ -20,25 +20,25 @@ namespace RestaurantManagementSystem.Infrastructure.Repositories
             Collection = Context.Database.GetCollection<TEntity>($"{typeof(TEntity).Name}s");
         }
 
-        public virtual async Task InsertAsync(TEntity entity)
+        public virtual async Task InsertAsync(IClientSessionHandle session, TEntity entity)
         {
-            await Collection.InsertOneAsync(Context.Session, entity);
+            await Collection.InsertOneAsync(session, entity);
         }
 
-        public virtual async Task UpdateAsync(TEntity entity)
+        public virtual async Task UpdateAsync(IClientSessionHandle session, TEntity entity)
         {
             FilterDefinition<TEntity> filter = FilterEntityByID(entity);
 
             if (entity != null)
-                await Collection.ReplaceOneAsync(Context.Session, filter, entity);
+                await Collection.ReplaceOneAsync(session, filter, entity);
         }
 
-        public virtual async Task DeleteAsync(TEntity entity)
+        public virtual async Task DeleteAsync(IClientSessionHandle session, TEntity entity)
         {
             FilterDefinition<TEntity> filter = FilterEntityByID(entity);
 
             if (entity != null)
-                await Collection.DeleteOneAsync(Context.Session, filter);
+                await Collection.DeleteOneAsync(session, filter);
         }
 
         public virtual async Task<List<TEntity>> AllAsync() {

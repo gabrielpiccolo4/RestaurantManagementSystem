@@ -7,5 +7,7 @@ namespace RestaurantManagementSystem.Infrastructure.Models
         public const string SectionName = "App";
 
         public string JwtSecret { get; set; }
+
+        public string AesKey { get; set; }
     }
 }

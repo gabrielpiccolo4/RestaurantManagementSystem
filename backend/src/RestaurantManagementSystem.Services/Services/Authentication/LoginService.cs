@@ -28,18 +28,12 @@ namespace RestaurantManagementSystem.Services.Services.Authentication
         /// <summary>
         /// Checks if the user exists and generates the Authentication token
         /// </summary>
-        /// <param name="username">Username</param>
+        /// <param name="email">Email</param>
         /// <param name="password">Password</param>
         /// <returns>A <see cref="Task"/> of type <see cref="LoginResponseDTO"/></returns>
-        public async Task<LoginResponseDTO> Login(string username, string password)
+        public async Task<LoginResponseDTO> Login(string email, string password)
         {
-            if (string.IsNullOrEmpty(username))
-                throw new ArgumentNullException(nameof(username));
-
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException(nameof(password));
-
-            var user = await _userRepository.FindAsync(username, password);
+            var user = await _userRepository.FindAsync(email, password);
             if (user == null)
                 return null;
 

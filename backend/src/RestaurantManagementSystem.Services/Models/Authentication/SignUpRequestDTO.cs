@@ -3,10 +3,16 @@
 namespace RestaurantManagementSystem.Application.Models.Authentication
 {
     /// <summary>
-    /// Login request DTO
+    /// Sign up request DTO
     /// </summary>
-    public class LoginRequestDTO
+    public class SignUpRequestDTO
     {
+        /// <summary>
+        /// Full name
+        /// </summary>
+        [Required]
+        public string Name { get; set; }
+
         /// <summary>
         /// Email
         /// </summary>
@@ -18,6 +24,7 @@ namespace RestaurantManagementSystem.Application.Models.Authentication
         /// Password
         /// </summary>
         [Required]
+        [MinLength(6, ErrorMessage = "Password must be 6 characters or more.")]
         public string Password { get; set; }
     }
 }

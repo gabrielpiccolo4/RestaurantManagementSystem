@@ -28,13 +28,14 @@ namespace RestaurantManagementSystem.Api.Controllers.Authentication
         /// <param name="loginRequest">Instance of the <see cref="LoginRequestDTO"/> class</param>
         /// <returns>An <see cref="ActionResult"/> of type <see cref="LoginResponseDTO"/></returns>
         /// <response code="200">Logged in successfully</response>
+        /// <response code="401">Invalid e-mail or password</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
         public async Task<ActionResult<LoginResponseDTO>> Post(LoginRequestDTO loginRequest)
         {
-            var loginResponse = await _loginService.Login(loginRequest.Username, loginRequest.Password);
+            var loginResponse = await _loginService.Login(loginRequest.Email, loginRequest.Password);
 
             if (loginResponse == null)
                 return Unauthorized();
